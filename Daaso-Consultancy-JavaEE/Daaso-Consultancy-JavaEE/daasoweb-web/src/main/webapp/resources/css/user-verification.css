@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16-Jun-2016, 12:38:08 PM
+    Author     : Omar
+*/
+
+.userverification-header {
+    font-size:150%;
+    font-weight:600;
+}
+
+.userverification-error-text {
+    color:#D20005;
+    font-weight:600;
+}
+
+.userverification-field-label {
+    display:block;
+    font-size: 140%;
+    margin: 1% 0 0 0;
+}
+
+.userverification-field {
+    display:block;
+    font-size: 140%;
+    padding: 1%;
+}
+
+.userverification-submit {
+    width:100%;
+    font-size: 140%;
+    margin: 1% 0;
+    font-weight: 600;
+}

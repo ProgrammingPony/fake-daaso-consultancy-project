@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <ui:insert name="css"></ui:insert>
+        
+        <!--Favicon-->
+        <link rel="icon" href="#{resource['images/favicon32.png']}" sizes="32x32" />
+        
+        <!--External Scripts-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        
+        <title><ui:insert name="title"/></title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top-contact">
+            <h:outputText class="top-contact-item" value="example@gmail.com"></h:outputText>
+            <h:outputText class="top-contact-item" value="(905) 555-5555"></h:outputText>
+            <h:outputText class="top-contact-item" value="Hamilton, ON, Canada"></h:outputText>
+        </div>
+        
+        <div id="top">
+            <!--For logo-->            
+            <div id="top-left-logo">
+                <h:link outcome="index">
+                    <h:panelGrid columns="1" >
+                        <h:graphicImage library="images" name="banner-2016-06-24.png" alt="DaaSo Text" styleClass="top-left-logo top-link" url="index.xhtml"/>
+                    </h:panelGrid>
+                </h:link>                
+            </div>           
+            
+            <div>
+                <div class="right top-right">
+                    <h:panelGrid id="top-right-content" styleClass="top-right-panel-group" columns="1" cellpadding="0" cellspacing="0">
+                        <!--Social Icons-->
+                        <h:panelGroup styleClass="top-social-icons top-right-panel-group" >
+                            <h:outputLink class="top-social-link" value="https://www.linkedin.com/" target="_blank">
+                                <h:graphicImage library="images" name="socialicon_linkedin.png" styleClass="top-link top-right-social-icon"/>
+                            </h:outputLink>
+                            
+                            <h:outputLink class="top-social-link" value="https://www.facebook.com/" target="_blank">
+                                <h:graphicImage library="images" name="socialicon_facebook.png" styleClass="top-right-social-icon top-link"/>
+                            </h:outputLink>
+                            
+                            <h:outputLink class="top-social-link" value="https://plus.google.com/" target="_blank">
+                                <h:graphicImage library="images" name="socialicon_gplus.png" styleClass="top-link top-right-social-icon"/>
+                            </h:outputLink>
+                            
+                            <h:outputLink class="top-social-link" value="https://twitter.com/" target="_blank">
+                                <h:graphicImage library="images" name="socialicon_twitter.png" styleClass="top-link top-right-social-icon"/>
+                            </h:outputLink>
+                        </h:panelGroup>
+                                               
+                        <!--Login for Facebook-->
+                        <h:link outcome='facebook-login' rendered="#{empty activeUser}">
+                            <h:graphicImage library="images" name="signin_facebook.png" styleClass="top-right-signin-icon"/>
+                        </h:link>
+                        
+                        
+                        <!--Login for Google-->                        
+                        <h:link outcome='google-login' rendered="#{empty activeUser}">
+                            <h:graphicImage library="images" name="signin_google.png" styleClass="top-right-signin-icon"/>
+                        </h:link>
+                        
+                        
+                        <!--Login for linkedIn-->                        
+                        <h:link outcome='linkedin-login' rendered="#{empty activeUser}">
+                            <h:graphicImage library="images" name="signin_linkedin.png" styleClass="top-right-signin-icon"/>
+                        </h:link>
+                    </h:panelGrid>
+                </div>
+                <div class="right_content">
+                    <div id="top-content-filler">
+                        If you see this then it is a bug, please report it with a screenshot!
+                    </div>
+                    <div id="top-content-menu">
+                        <h:panelGrid>
+                            <h:panelGroup>
+                                <h:link styleClass="top-content-menu-item" outcome="web-apps">
+                                    <h:outputText value="Web Apps"/>
+                                </h:link>
+                                <h:link styleClass="top-content-menu-item" outcome="desktop-apps">
+                                    <h:outputText value="Desktop Apps"/>
+                                </h:link>
+                                <h:link styleClass="top-content-menu-item" outcome="mobile-apps">
+                                    <h:outputText value="Mobile Apps"/>
+                                </h:link>
+                                <h:link styleClass="top-content-menu-item" outcome="app-development">
+                                    <h:outputText value="App Development"/>
+                                </h:link>
+                            </h:panelGroup>                                
+                        </h:panelGrid>                         
+                    </div>
+                </div>
+            </div>
+            
+            <!--Clear Float so height shows properly in parent-->
+            <div style="clear:both; visibility:hidden;"></div>
+            
+        </div>
+        
+        <br/>
+        <div>
+            <h:panelGroup id="left" styleClass="left text-container">
+                
+                <!--Logged in User Basic Info-->
+                <h:outputText styleClass="left-profilesummary-item-header" value="Logged in as:" rendered="#{not empty activeUser}"/>
+                <h:outputText styleClass="left-profilesummary-item" value="#{activeUser.email}" rendered="#{not empty activeUser}"/>
+                <h:outputText styleClass="left-profilesummary-item-header" value="Last Login:" rendered="#{not empty activeUser}"/>
+                <h:outputText styleClass="left-profilesummary-item" value="#{activeUser.lastLogin}" rendered="#{not empty activeUser}" converter="DateTimeConverter"/>
+
+
+                <!--Personal Menu-->
+                <h:link outcome="user-verification" styleClass="left-menu-option-item" rendered="#{not empty activeUser and not activeUser.verified}">
+                    <h:outputText value="Get Verified"/>
+                </h:link>
+
+                <h:link outcome="profile" styleClass="left-menu-option-item" rendered="#{not empty activeUser}">
+                    <h:outputText value="My Profile"/>
+                </h:link>
+
+                <h:link outcome="make-payment" styleClass="left-menu-option-item" rendered="#{not empty activeUser and activeUser.verified}">
+                    <h:outputText value="Make Payment"/>
+                </h:link>
+
+                <h:link outcome="my-requests" styleClass="left-menu-option-item" rendered="#{not empty activeUser and activeUser.verified}">
+                    <h:outputText value="My Requests"/>
+                </h:link>
+
+                <h:link outcome="my-transactions" styleClass="left-menu-option-item" rendered="#{not empty activeUser and activeUser.verified}">
+                    <h:outputText value="My Transactions"/>
+                </h:link>
+
+                <h:form rendered="#{not empty activeUser}">
+                    <h:commandLink action="#{loginBean.logout()}" styleClass="left-menu-option-item">
+                        <h:outputText value="Logout"/>
+                    </h:commandLink>
+                </h:form>
+
+                <h:link outcome="login" styleClass="left-menu-option-item" rendered="#{empty activeUser}">
+                    <h:outputText value="Login"/>
+                </h:link>                   
+
+                
+            </h:panelGroup>
+            <!--</div>-->
+            <div>
+                <!--<div id="right" class="right text-container">
+                    <ui:insert name="right">Right</ui:insert>
+                </div>-->
+                <div id="content" class="content right_content text-container body-content">
+                    <ui:insert name="content"></ui:insert>
+                </div>
+                <!--Clear floated objects-->
+                <div style="clear:both;"></div>
+            </div>
+            <!--Clear floated objects-->
+            <div style="clear:both;"></div>
+        </div>
+
+        <div id="footer">                       
+            <h:panelGrid headerClass="footer-column-header" styleClass="footer-column">
+                <f:facet name="header">
+                    Contact Information
+                </f:facet>
+                <h:panelGroup>
+                    <h:outputText class="footer-item-header" value="Email: "/>
+                    <h:outputText class="footer-item" value="example@gmail.com"/>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:outputText class="footer-item-header" value="Phone: "/>
+                    <h:outputText class="footer-item" value="(905) 555-5555"/>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:outputText class="footer-item-header" value="Location: "/>
+                    <h:outputText class="footer-item" value="Hamilton, ON, Canada"/>
+                </h:panelGroup>
+            </h:panelGrid>
+            
+            <h:panelGrid headerClass="footer-column-header" styleClass="footer-column">
+                <f:facet name="header">
+                    Phone Contact Hours
+                </f:facet>
+                <h:panelGroup>
+                    <h:outputText class="footer-item-header" value="Monday - Friday: "/>
+                    <h:outputText class="footer-item" value="   8:00PM - 10:00PM"/>
+                </h:panelGroup>
+                <h:panelGroup>
+                    <h:outputText class="footer-item-header" value="Saturday - Sunday: "/>
+                    <h:outputText class="footer-item" value="   10:00AM - 10:00PM"/>
+                </h:panelGroup>
+            </h:panelGrid>
+            
+            <h:panelGrid headerClass="footer-column-header" styleClass="footer-column">
+                <f:facet name="header">
+                    Email Response
+                </f:facet>
+
+                <h:outputText class="footer-item-header" value="Response Time"/>
+                Typically less than 5 hours after email is received
+
+                <h:outputText class="footer-item-header" value="Delay Warning"/>
+                Delays may occur during peak hours (11AM-2PM) on weekdays
+            </h:panelGrid>
+            
+            <!--Clear floated objects-->
+            <div style="clear:both;"></div>
+        </div>
+        <div>
+            <h:panelGroup id="postfooter-copyright" styleClass="postfooter">                
+                <h:outputText value="&copy; Omar Abdel Bari "/>
+                <h:outputText value="#{currentDateAndTimeHelper.currentYear}">
+                    <f:convertDateTime pattern="yyyy" type="date" />
+                </h:outputText>
+                
+                <h:outputText value="- By accessing this service you are agreeing to comply with DaaSo's "/>
+                <h:link outcome="privacy-policy">privacy policy</h:link>.
+            </h:panelGroup>
+        </div>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template/base.xhtml">
+
+            <ui:define name="title">
+                Profile
+            </ui:define>
+            
+            <ui:define name="css">
+                <h:outputStylesheet library="css" name="profile.css"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form rendered="#{not empty activeUser}">
+                        
+                        <h:outputText styleClass="profile-field-section-header" value="My Accounts and Ids" />
+                        
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="User ID: "/>
+                            <h:outputText styleClass="profile-field-value" value=" #{activeUser.id}"/>
+                        </h:panelGroup>
+                    
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="Email: "/>
+                            <h:outputText styleClass="profile-field-value" value="#{activeUser.email}"/>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="Google Plus ID: " />
+                            <h:outputText styleClass="profile-field-value" value="Feature Not Yet Available"/>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="Facebook ID: " />
+                            <h:outputText styleClass="profile-field-value" value="Feature Not Yet Available"/>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="LinkedIn ID: " />
+                            <h:outputText styleClass="profile-field-value" value="Feature Not Yet Available"/>
+                        </h:panelGroup>
+                        
+                        <h:outputText styleClass="profile-field-section-header" value="My Information" />
+                        
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="First Name" />
+                            <h:inputText id="first-name" styleClass="profile-field-inputtext" value="#{editProfileBean.firstName}"></h:inputText>
+                        </h:panelGroup>
+                        <h:message for="first-name"/>
+                    
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="Last Name" />
+                            <h:inputText id="last-name" styleClass="profile-field-inputtext" value="#{editProfileBean.lastName}"></h:inputText>
+                        </h:panelGroup>
+                        <h:message for="last-name"/>
+                    
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="Date of Birth: " />
+                            <h:outputText styleClass="profile-field-value" value="Feature Not Yet Available"/>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup styleClass="profile-form-row">
+                            <h:outputText styleClass="profile-field-label" value="Phone"/>
+                            <h:inputText id="phone" styleClass="profile-field-inputtext"></h:inputText>
+                        </h:panelGroup>
+                        <h:message for="phone"/> 
+                        
+                        <h:panelGroup>
+                            <h:commandButton id="update-profile-button" value="Update Profile" styleClass="profile-submitbutton" action="#{editProfileBean.updateProfile()}"/>    
+                        </h:panelGroup>  
+                        <h:message for="update-profile-button" />
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

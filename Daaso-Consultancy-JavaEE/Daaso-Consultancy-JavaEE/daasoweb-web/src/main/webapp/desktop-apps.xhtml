@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template/base.xhtml">
+
+            <ui:define name="title">
+                Desktop Apps
+            </ui:define>
+
+            <ui:define name="content">
+                <h1>Desktop Apps</h1>           
+                
+                <span class="wrap-text">
+                    <h:graphicImage library="images" name="desktop-app-200.jpg" alt="Screwdriver" styleClass="left-aligned-image"/>
+                    <p>In some situations, a desktop application may be a better alternative to a web application. Some common situations where applies: </p>
+                    
+                    <ul>
+                        <li>Application that require high levels of computation which can cost web servers significantly</li>
+                        <li>When offline availability is a high priority</li>
+                    </ul>
+                </span>
+                
+                <div style="clear:both;"></div>
+                
+                <p>
+                    Not sure if a desktop application is right for you? Send us an email or drop us a call and DaaSo will be glad to help.
+                </p>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

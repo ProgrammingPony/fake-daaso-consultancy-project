@@ -1,0 +1,80 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 28, 2016, 6:19:51 AM
+    Author     : Omar
+*/
+
+.daaso-login-container {
+    box-sizing:border-box;
+    width:100%;
+    background:#000;
+    color:#fff;
+    font-size:120%;
+}
+
+.daaso-login-column {
+    width:44%;
+    padding:2%;
+}
+
+.daaso-left-column {
+    float:left;
+}
+
+.daaso-right-column {
+    float:right;
+}
+
+.daaso-login-headertext {
+    font-size:160%;
+    display:block;
+    text-align:center;
+    padding:1%;
+}
+
+.daaso-login-fieldlabel {
+    width:46%;
+    display:inline-block;
+    box-sizing: border-box;
+    float:left;
+    padding:1%;
+    font-size:130%;
+}
+
+.daaso-login-table {
+    width:100%;
+}
+
+.daaso-login-socialsignin-icon {
+    display:inline-block;
+    width:50%;
+    height:auto;
+    text-align:center;
+}
+
+.daaso-login-socialsignin-container {
+    text-align:center;
+}
+
+.daaso-login-submitbutton {
+    width:100%;
+    padding:1%;
+    font-size:130%;
+}
+
+.daaso-login-textbox {
+    padding:1%;
+    font-size:130%;
+    width:46%;
+    display:inline-block;
+    float:right;
+}
+
+.daaso-login-errortext {
+    color:#D20005;
+    clear:both;
+}

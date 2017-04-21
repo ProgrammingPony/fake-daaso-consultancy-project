@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    
+    <h:body>
+        <ui:composition template="./template/base.xhtml">
+            <ui:define name="css">
+                <h:outputStylesheet library="css" name="landing.css"/>
+            </ui:define>
+            
+            <ui:define name="title">
+                DaaSo Software Consultancy
+            </ui:define>
+
+                
+            <ui:define name="right">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                
+                <h:outputText styleClass="landing-announcement-text" value="Announcement" rendered="false"/>
+
+                <h1>Our Mission</h1>                
+                <p>
+                    To deliver quality software services while still being shariah-compliant. DaaSo aims to show the world the beauty and social conscious of trading guidelines established in shariah law.
+                </p>
+                
+                <h1>Who We Are</h1>                
+                <p>
+                    A team of highly-motivated individuals who strive to help individuals and organizations improving existing processes using software. We are not afraid to dive into new waters, active-learning is our passion.
+                </p>
+                
+                <h1>Questions?</h1>
+                <p>
+                    Don't hesitate to talk to us! Check below for contact information.
+                </p>
+                
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+

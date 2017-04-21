@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template/base.xhtml">
+
+            <ui:define name="css">
+                <h:outputStylesheet library="css" name="login.css"/>
+            </ui:define>
+
+            <ui:define name="title">
+                Login|Sign Up
+            </ui:define>
+
+            <ui:define name="right">
+                right
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="daaso-login-container">
+                    
+                    <div class="daaso-login-column daaso-left-column">
+                        <h:form rendered="#{loginBean.loginAttemptsRemaining gt 0}">
+                            <h:panelGrid columns="1" styleClass="daaso-login-table" cellspacing="12px">
+
+                                <f:facet name="header">
+                                    <h:outputText value="Returning User?" styleClass="daaso-login-headertext"/>
+                                </f:facet> 
+
+                                <h:panelGroup>
+                                    <h:outputText value="Email" styleClass="daaso-login-fieldlabel"/>
+                                    <h:inputText id="j_username" styleClass="daaso-login-textbox" autocomplete="off" required="true" requiredMessage="Email is required" value="#{loginBean.email}" validatorMessage="Invalid Email format">
+                                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                                    </h:inputText>
+                                    <h:message for="j_username" styleClass="daaso-login-errortext" />
+                                </h:panelGroup>
+
+                                <h:panelGroup>
+                                    <h:outputText value="Password" styleClass="daaso-login-fieldlabel" />
+                                    <h:inputSecret id="j_password" styleClass="daaso-login-textbox" autocomplete="off" required="true" requiredMessage="Password is required" value="#{loginBean.password}"/>
+                                    <h:message for="j_password" styleClass="daaso-login-errortext"/>
+                                </h:panelGroup>
+
+                                <h:panelGroup>
+                                    <h:commandButton id="login-button" value="Login" styleClass="daaso-login-submitbutton" action="#{loginBean.login}"/>  
+                                </h:panelGroup>
+
+                            </h:panelGrid>
+                        </h:form>
+                        
+                        <h:panelGrid columns="1" style="width:100%" columnClasses="daaso-login-socialsignin-container" rendered="#{loginBean.loginAttemptsRemaining gt 0}">
+                            <h:panelGroup>
+                                <!--Login for Facebook-->
+                                <h:link outcome='facebook-login'>
+                                    <h:graphicImage library="images" name="signin_facebook.png" styleClass="daaso-login-socialsignin-icon"/>
+                                </h:link>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <!--Login for Google-->                        
+                                <h:link outcome='google-login' >
+                                    <h:graphicImage library="images" name="signin_google.png" styleClass="daaso-login-socialsignin-icon"/>
+                                </h:link>
+                            </h:panelGroup>
+
+                            <h:panelGroup>                           
+                                <!--Login for linkedIn-->                        
+                                <h:link outcome='linkedin-login'>
+                                    <h:graphicImage library="images" name="signin_linkedin.png" styleClass="daaso-login-socialsignin-icon"/>
+                                </h:link>
+                            </h:panelGroup>                        
+                        </h:panelGrid>
+                        
+                        <h:outputText value="You have exhausted your login attempts. Please contact omarab@daaso-consultancy.com to have this corrected if this is an error. Otherwise please check back later." rendered="#{loginBean.loginAttemptsRemaining lt 1}"/>
+                    </div>
+
+                    <div class="daaso-login-column daaso-right-column">
+                        <h:form>                       
+                            <h:panelGrid columns="1" styleClass="daaso-login-table" cellspacing="12px">
+                                <f:facet name="header" >
+                                    <h:outputText value="New User?" styleClass="daaso-login-headertext"/>
+                                </f:facet>
+
+                                <h:panelGroup>
+                                    <h:outputText value="Email" styleClass="daaso-login-fieldlabel"/>                                    
+                                    <h:inputText value="#{createUserBean.email}" id="login-semail" styleClass="daaso-login-textbox" required="true" requiredMessage="Email is required">
+                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                                    </h:inputText>                                    
+                                </h:panelGroup>                                
+                                <h:message for="login-semail" styleClass="daaso-login-errortext"/>
+                                
+                                <h:panelGroup>
+                                    <h:outputText value="First Name" styleClass="daaso-login-fieldlabel"/>                                    
+                                    <h:inputText value="#{createUserBean.firstName}" id="login-fname" styleClass="daaso-login-textbox" required="true" requiredMessage="Please Enter your First Name">
+                                        <f:validateLength maximum="35" />
+                                    </h:inputText>
+                                </h:panelGroup>                                
+                                <h:message for="login-fname" styleClass="daaso-login-errortext"/>
+                                
+                                <h:panelGroup>
+                                    <h:outputText value="Last Name" styleClass="daaso-login-fieldlabel"/>                                    
+                                    <h:inputText value="#{createUserBean.lastName}" id="login-lname" styleClass="daaso-login-textbox" required="true" requiredMessage="Please Enter your Last Name">
+                                        <f:validateLength maximum="35" />
+                                    </h:inputText>                                    
+                                </h:panelGroup>
+                                <h:message for="login-lname" styleClass="daaso-login-errortext"/>
+
+                                <h:panelGroup>
+                                    <h:outputText value="Password" styleClass="daaso-login-fieldlabel"/>                                    
+                                    <h:inputSecret value="#{createUserBean.password}" id="login-spassword" styleClass="daaso-login-textbox" required="true" requiredMessage="Please Enter your Password">
+                                        <f:validator validatorId="passwordValidator"/>
+                                        <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
+                                    </h:inputSecret>
+                                </h:panelGroup>
+                                <h:message for="login-spassword" styleClass="daaso-login-errortext"/>
+
+                                <h:panelGroup>
+                                    <h:outputText value="Confirm Password" styleClass="daaso-login-fieldlabel"/>
+                                    <h:inputSecret binding="#{confirmPassword}" id="login-scpassword" styleClass="daaso-login-textbox" required="true" requiredMessage="Please Confirm your Password"/>
+                                </h:panelGroup>
+
+                                <h:panelGroup>
+                                    <h:commandButton id="register-button" value="Sign Up Free" styleClass="daaso-login-submitbutton" action="#{createUserBean.createUser}"/>    
+                                </h:panelGroup>                          
+
+                            </h:panelGrid>
+
+                        </h:form>                        
+                    </div>
+
+                    <div style="clear:both;"></div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

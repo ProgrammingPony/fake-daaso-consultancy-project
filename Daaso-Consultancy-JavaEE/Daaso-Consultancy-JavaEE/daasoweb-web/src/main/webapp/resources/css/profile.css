@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25-Jun-2016, 8:41:23 PM
+    Author     : Omar
+*/
+
+.profile-field-label {
+    display:inline-block;
+    font-weight:600;
+    font-size:140%;
+}
+
+.profile-field-value {
+    display:inline-block;
+    font-size:140%;
+    margin-left:2%;
+    font-weight:300;
+}
+
+.profile-field-inputtext {
+    display:inline-block;
+    font-size:140%;
+    margin-left:2%;
+    font-weight:300;
+}
+
+.profile-field-section-header {
+    font-size:160%;
+    font-weight:600;
+    margin-top:2%;
+    display:block;
+}
+
+.profile-form-row {
+    display:block;
+    margin-top:1%;
+}

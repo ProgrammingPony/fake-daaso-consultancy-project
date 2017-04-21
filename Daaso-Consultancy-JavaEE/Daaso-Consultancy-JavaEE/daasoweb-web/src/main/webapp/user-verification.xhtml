@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template/base.xhtml">
+
+            <ui:define name="css">
+                <h:outputStylesheet library="css" name="user-verification.css"/>
+            </ui:define>
+
+            <ui:define name="title">
+                User Verification
+            </ui:define>
+
+            <ui:define name="right">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form rendered="#{not empty activeUser and not activeUser.verified}">
+                    <h:panelGrid>
+                        <f:facet name="header" >
+                            <h:outputText value="User Verification" styleClass="userverification-header"/>
+                        </f:facet>
+                        <h:panelGroup>
+                            <h:outputText value="Email" styleClass="userverification-field-label"/>                                    
+                            <h:inputText value="#{userVerificationBean.email}" id="email" styleClass="userverification-field" required="true" requiredMessage="Email is required" validatorMessage="Incorrect email format">
+                                 <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                            </h:inputText>
+                        </h:panelGroup>                        
+                        <h:message for="email" styleClass="userverification-error-text"/>
+                        
+                        <h:panelGroup>
+                            <h:outputText value="Verification Code" styleClass="userverification-field-label"/>                                    
+                            <h:inputText value="#{userVerificationBean.verificationCode}" id="v-code" styleClass="userverification-field" required="true" requiredMessage="Code is required"/>
+                        </h:panelGroup>                        
+                        <h:message for="v-code" styleClass="userverification-error-text"/>
+                        
+                        <h:panelGroup>
+                            <h:commandButton id="verify-submit" value="Verify" styleClass="userverification-submit" action="#{userVerificationBean.verify}"/>    
+                        </h:panelGroup>
+                        <h:message for="verify-submit" styleClass="userverification-error-text"/>
+                        
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

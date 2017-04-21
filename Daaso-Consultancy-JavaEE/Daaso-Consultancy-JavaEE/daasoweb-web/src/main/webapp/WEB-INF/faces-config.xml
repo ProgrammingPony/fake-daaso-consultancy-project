@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <managed-bean>
+        <managed-bean-name>userVerificationBean</managed-bean-name>
+        <managed-bean-class>Daaso.Jsf.ManagedBeans.UserVerificationBean</managed-bean-class>        
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>loginBean</managed-bean-name>
+        <managed-bean-class>Daaso.Jsf.ManagedBeans.LoginBean</managed-bean-class>    
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>editProfileBean</managed-bean-name>
+        <managed-bean-class>Daaso.Jsf.ManagedBeans.EditProfileBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>createUserBean</managed-bean-name>
+        <managed-bean-class>Daaso.Jsf.ManagedBeans.CreateUserBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+</faces-config>
